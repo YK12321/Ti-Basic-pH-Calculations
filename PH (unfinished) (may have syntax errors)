@@ -1,0 +1,89 @@
+1*10^~14->X
+0->P
+"CONST INT X=10*10^~14"
+Lbl 0:
+ClrHome:
+DelVar A:DelVar B:DelVar C:DelVar D:DelVar Z:0->Z:1->I
+Menu("CALCULATE FROM","[OH~]",1,"[H3O+]",2,"PH",3,"POH",4,"FORMULAS UP/DOWN SCROLL",5,"K[|a] CALCULATIONS",6,"CONFIGURE",A,"EXIT",Q):
+Lbl 1
+Input "[OH~]: ",A
+X/A->B
+Disp "[H3O+] -\> ":Disp B
+~log(X/A)->C
+Disp "PH -\> ":Disp C
+~log(A)->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 2
+Input "[H3O+]: ",B
+X/B->A
+Disp "[OH-] -\> ":Disp A
+~log(B)->C
+Disp "PH -\> ":Disp C
+~log(X/B)->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 3
+Input "PH: ",C
+X/(10^~C)->A
+Disp "[OH-] -\> ":Disp A
+10^~C->B
+Disp "[H3O+] -\> ":Disp B
+14-C->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 4
+Input "POH: ",D
+10^~D->A
+Disp "[OH-] -\> ":Disp A
+X/(10^~D)->B
+Disp "[H3O+] -\> ":Disp B
+4-D->C
+Disp "PH -\> ":Disp C
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 5:
+"I DON'T KNOW WHERE TO START"
+"EDIT: I GUESS I'LL JUST WRITE THE FORMULAS IN THE ORDER FROM THE MENU"
+Menu("Select a page","Page 1",P1,"Page 2",P2,"Exit",0)
+Lbl P1:
+Output(1,1,"[H3O+]=1*10^\(~14)/[OH~]"):Output(2,1,"PH=~log(10^\(~14)/[OH~]"):Output(3,1,"POH=~log([OH~])"):Output(4,1,"[OH~]=10^\(~14)/[H3O+]"):Output(5,1,"PH=~log([H3O+])"):Output(6,1,"POH=~log((10^\(~14)/[H3O+])"):Output(7,1,"[OH~]=10^\(~14)/10^\(~PH)"):Output(8,1,"[H3O+]=10^\(~PH)"):Output(9,1,"POH=14-PH"):Output(10,1,"[OH~]=10^\(~POH)"):Pause :ClrHome:Goto 5:
+Lbl P2:
+Output(1,1,"[H3O+]=10^\(~14)/10^(~pOH)"):Output(2,1,"pH=14-pOH"):Pause :ClrHome:Goto 5:
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 6
+Menu("K[|a] CALCULATIONS","FIND K[|a]",K1,"FIND [REACT]F",KRF,"FIND [PROD]F",KPF,"FIND [REACT][i]",KRI,"FIND [PROD][i]",KPI,"GO BACK",0)
+Lbl K1
+0->Z
+Lbl K1B
+If Z!=24 and Z!=25 and Z!=26 and Z!=34:Then:
+Output(1,1,"CHEM X"):Output(1,11,Y,"CHEM Y"):Output(1,19,"CHEM Z"):1->I:For(I,1,10,1):Output(I,9,":"):End:
+End
+If Z=
+Lbl K1A
+Repeat Z=24 or Z=35 or Z=26 or Z=25 or Z=22 or Z=105:getKey->Z:End
+If Z=22:Then:Goto 6:End
+If Z=105:Then:ClrHome:Input "ENTER VALUE",A:ClrHome:
+	"// CONFIG: "
+	Lbl A:
+	ClrHome
+	Menu("CONFIGURATION MENU","ENABLE/DISABLE PAUSE",B,"SET AUTO MENU TIME",C,"CHECK VERSION",D,"RETURN TO PROGRAM",E)
+	Lbl B:
+If P=0:Then:1->P:10->T:Disp "DISABLED PAUSE":Disp "ENABLING AUTO MENU":Disp "DEFAULT MENU TIME: ":Disp T:Else:0->P:Disp "ENABLED PAUSE":End
+If P=0:Then:Pause :Else:Wait T:End
+	Goto A
+	Lbl C
+	If P!=0:Then:
+Disp "CURRENT TIME FOR AUTO ":Disp "MENU:":Disp T:Input "ENTER NEW TIME (S)",T:Else:Disp "ENABLE THIS BY DISABLING":Disp "PAUSE FEATURE":End
+If P=0:Then:Pause :Else:Wait T:End
+	Goto A
+	Lbl D:
+	Disp "PH CALCULATIONS V0.0.1":Disp "WRITTEN BY YK":Disp "BE SURE TO CHECK OUT ":Disp "GITHUB.COM/YK12321":Disp "FOR MORE AWESOME TI84 prgmS":Disp "YOU'RE AWESOME!":
+If P=0:Then:Pause :Else:Wait T:End
+	Goto A
+	Lbl E:Goto 0:
+	Lbl Q:Output(3,1,"GOODBYE :)"):"GITHUB.COM/YK12321"->Str1
