@@ -1,0 +1,126 @@
+1*10^~14->X
+0->P
+"CONST INT X=10*10^~14"
+Lbl 0:
+ClrHome:
+DelVar A:DelVar B:DelVar C:DelVar D:DelVar Z:0->Z:1->I
+Menu("CALCULATE FROM","[OH~]",1,"[H3O+]",2,"PH",3,"POH",4,"FORMULAS UP/DOWN SCROLL",5,"K[|a] CALCULATIONS",6,"CONFIGURE",A,"EXIT",Q):
+Lbl 1
+Input "[OH~]: ",A
+X/A->B
+Disp "[H3O+] -\> ":Disp B
+~log(X/A)->C
+Disp "PH -\> ":Disp C
+~log(A)->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 2
+Input "[H3O+]: ",B
+X/B->A
+Disp "[OH-] -\> ":Disp A
+~log(B)->C
+Disp "PH -\> ":Disp C
+~log(X/B)->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 3
+Input "PH: ",C
+X/(10^~C)->A
+Disp "[OH-] -\> ":Disp A
+10^~C->B
+Disp "[H3O+] -\> ":Disp B
+14-C->D
+Disp "POH -\> ":Disp D
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 4
+Input "POH: ",D
+10^~D->A
+Disp "[OH-] -\> ":Disp A
+X/(10^~D)->B
+Disp "[H3O+] -\> ":Disp B
+4-D->C
+Disp "PH -\> ":Disp C
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 5:
+"I DON'T KNOW WHERE TO START"
+"EDIT: I GUESS I'LL JUST WRITE THE FORMULAS IN THE ORDER FROM THE MENU"
+Menu("Select a page","Page 1",P1,"Page 2",P2,"Exit",0)
+Lbl P1:
+Output(1,1,"[H3O+]=1*10^\(~14)/[OH~]"):Output(2,1,"PH=~log(10^\(~14)/[OH~]"):Output(3,1,"POH=~log([OH~])"):Output(4,1,"[OH~]=10^\(~14)/[H3O+]"):Output(5,1,"PH=~log([H3O+])"):Output(6,1,"POH=~log((10^\(~14)/[H3O+])"):Output(7,1,"[OH~]=10^\(~14)/10^\(~PH)"):Output(8,1,"[H3O+]=10^\(~PH)"):Output(9,1,"POH=14-PH"):Output(10,1,"[OH~]=10^\(~POH)"):Pause :ClrHome:Goto 5:
+Lbl P2:
+Output(1,1,"[H3O+]=10^\(~14)/10^(~pOH)"):Output(2,1,"pH=14-pOH"):Pause :ClrHome:Goto 5:
+If P=0:Then:Pause :Else:Wait T:End
+Goto 0
+Lbl 6
+Menu("K[|a] CALCULATIONS","FIND K[|a]",K1,"FIND [REACT]F",KR,"FIND [PROD]F",KP,"FIND [REACT][i]",K2,"FIND [PROD][i]",K3,"GO BACK",0)
+Lbl KR:Lbl KP:Lbl K2:Lbl K3:ClrHome:Output(5,5,"I'm gonna have to add this feature later"):If P=0:Then:Pause :Else:Wait T:End:Goto 6
+Lbl K1
+ClrHome
+Output(9,5,"The Ka is: "):{3,3->dim([A]
+Fill(0,[A]
+For(A,1,3
+	Output(2A,2,sub("ICE",A,1
+	Output(1,7A-1,sub("HAA-H3O+",2A-1,2+2(A=3
+	For(B,1,3
+		Output(2A+2(BA=1),7B-1,[A](A,B
+	End
+End
+1->A:1->B
+"0->Str1
+Repeat K=105
+	Output(2A,7B+4,"]
+	Output(2A,7B-2,"[
+	getKey->K
+	Output(2A,7B-2,"
+	Output(2A,7B+4,"
+	If max(K={24,25,26,34,105
+	Then
+		If Str1!="0
+		Then
+			expr(sub(Str1,2,length(Str1)-1->[A](A,B
+		Else
+			Output(2A,7B-1,[A](A,B
+		End
+		"0->Str1
+		B+(K=26 and B!=3)-(K=24 and B!=1->B
+		A+(K=34 and A!=3)-(K=25 and A!=1->A
+		Output(2A,7B-1,"    
+	End
+	If K=55 or K>71 and min(K!={75,81,85,91,95,105
+	Then
+		"^
+		If K!=55
+		sub("789  456  123  0.~",K-36-5int(.1K),1
+		Str1+Ans->Str1
+		Output(2A,7B-1,sub(Str1,2,length(Str1)-1
+	End
+End
+If [A](1,1)!=0 and [A](1,2)!=0 and [A](1,3)!=0 and [A](2,1)=0:Then:Output(9,16,([A](1,2)*[A](1,3))/[A](1,1)):End
+If [A](1,1)!=0 and [A](1,2)=0 and [A](1,3)=0 and [A](2,2)!=0 and [A](2,3)!=0:Then:Output(9,16,([A](2,2)*[A](2,3))/[A](3,1)):End
+If [A](1,1)=0 and [A](1,2)=0 and [A](1,3)=0 and [A](3,1)!=0 and [A](3,2)!=0 and [A](3,3)!=0:Then:Output(9,16,([A](3,2)*[A](3,3))/[A](3,1)):End
+If P=0:Then:Pause :Else:Wait T:End
+Goto 6
+"// CONFIG: "
+Lbl A:
+ClrHome
+Menu("CONFIGURATION MENU","ENABLE/DISABLE PAUSE",B,"SET AUTO MENU TIME",C,"CHECK VERSION",D,"RETURN TO PROGRAM",E)
+Lbl B:
+If P=0:Then:1->P:10->T:Disp "DISABLED PAUSE":Disp "ENABLING AUTO MENU":Disp "DEFAULT MENU TIME: ":Disp T:Else:0->P:Disp "ENABLED PAUSE":End
+If P=0:Then:Pause :Else:Wait T:End
+
+Goto A
+Lbl C
+If P!=0:Then:
+Disp "CURRENT TIME FOR AUTO ":Disp "MENU:":Disp T:Input "ENTER NEW TIME (S)",T:Else:Disp "ENABLE THIS BY DISABLING":Disp "PAUSE FEATURE":End
+If P=0:Then:Pause :Else:Wait T:End
+Goto A
+Lbl D:
+Disp "PH CALCULATIONS V0.0.1":Disp "WRITTEN BY YK":Disp "BE SURE TO CHECK OUT ":Disp "GITHUB.COM/YK12321":Disp "FOR MORE AWESOME TI84 prgmS":Disp "YOU'RE AWESOME!":
+If P=0:Then:Pause :Else:Wait T:End
+Goto A
+Lbl E:Goto 0:
+Lbl Q:Output(3,1,"GOODBYE :)"):"GITHUB.COM/YK12321"->Str1
